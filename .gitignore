@@ -1,0 +1,11 @@
+# build files
+build/
+
+# editor files
+.idea/
+
+# modules files
+node_modules/
+
+# OS
+.DS_Store
