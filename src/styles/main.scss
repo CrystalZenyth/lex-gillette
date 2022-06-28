@@ -1,6 +1,288 @@
-.example {
-  display: grid;
-  transition: all .5s;
-  user-select: none;
-  background: linear-gradient(to bottom, white, black);
+@import 'mixins/variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
+
+*:focus {
+  outline-color: #000000;
+  outline-style: auto;
+  outline-offset: 4px;
+  outline-width: 4px;
+}
+body .w-webflow-badge{
+  display: none !important;
+}
+.navigation__container::before,
+.navigation__container::after {
+  content: none;
+}
+
+.link::before {
+  position: absolute;
+  content: "";
+  display: block;
+  right: 0;
+  bottom: 0px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: all 0.5s;
+}
+.link:focus:before,
+.link:hover:before {
+  width: 100%;
+  left: 0;
+  transition: all 0.5s;
+}
+.navigation__dropdown-list .navigation__dropdown-link:first-child {
+  margin-top: 20px;
+}
+.navigation__dropdown-list .navigation__dropdown-link:last-child {
+  margin-bottom: 20px;
+}
+.navigation__dropdown-btn {
+  svg {
+    transition: all 0.5s ease;
+  }
+  &.w--open {
+    svg {
+      transform: rotate(-180deg);
+    }
+  }
+  @media screen and (max-width: $tablet) {
+    svg {
+      width: 10px;
+      height: auto;
+    }
+  }
+}
+.menu-button.w--open {
+  height: 35px;
+  min-height: 35px;
+  .menu-button__line--top {
+    transform: rotate(45deg) translate(12px, 12px);
+  }
+  .menu-button__line--center {
+    opacity: 0;
+  }
+  .menu-button__line--bottom {
+    transform: rotate(-45deg) translate(11px, -11px);
+  }
+}
+.button__content svg,
+.button-submit svg {
+  width: 14px;
+
+  @media screen and (min-width: $desktop-small) {
+    width: 16px; 
+  }
+}
+.contacts-form__send button {
+  @media screen and (min-width: $desktop-small) {
+    width: 100%;
+  }
+  @media screen and (max-width: $mobile-vertical) {
+    width: 100%;
+  }
+}
+
+.contacts-desription__item::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 14px;
+  background-image: url("https://uploads-ssl.webflow.com/62b0653bbb3c55232c4fe1ec/62b47d0ff49e4268f3babecb_Vectorf.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 0;
+  top: 8px;
+}
+textarea {
+  resize: none;
+}
+
+.contacts-form__checkbox-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--text-color);
+  border-radius: 50%;
+}
+.contacts-form__checkbox:checked + .contacts-form__checkbox-label::before {
+  background: url("https://uploads-ssl.webflow.com/62b0653bbb3c55232c4fe1ec/62b47d0ff49e4268f3babecb_Vectorf.svg");
+  background-position: center;
+  background-size: 10px;
+  background-repeat: no-repeat;
+}
+
+.contacts-form__checkbox.js--error{
+  & + .contacts-form__checkbox-label{
+    color: var(--error-color);
+    .required{
+      display: inline;
+    }
+    &::before{
+border-color: var(--error-color);
+    }
+  }
+} 
+.contacts-form__checkbox:checked{
+  & + .contacts-form__checkbox-label{
+    color: var(--text-color);
+    .required{
+      display: none;
+    }
+    &::before{
+border-color: var(--text-color);
+    }
+  }
+} 
+.news-category__tag-item:nth-last-child(n+2)::after{
+  content:',';
+  position: relative;
+
+}
+
+.news-category__tags-wrapper{
+  .news-category__tags-list{
+    padding: 20px;
+  }
+}
+.news-category__item-footer{
+  .news-category__item-link{
+    display: none;
+  }
+}
+.title-xxl.article__title::first-line{
+  color: var(--title-color);
+}
+blockquote::before{
+  content: '';
+  position: absolute;
+  width: 1000px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: var(--main-background);
+  z-index: -1;
+}
+blockquote::before{
+  content: '';
+  position: absolute;
+  width: 6000px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  background: var(--main-background);
+  z-index: -1;
+}
+blockquote{
+  p,strong{
+    font-weight: 600;
+    width: 100%;
+  }
+  em{
+        text-align: right;
+        width: 100%;
+        font-size: 1rem;
+        line-height: 160%;
+        max-width: 320px;
+  }
+}
+.article__rich-text{
+  ul{
+    li{
+      padding-left: 0;
+    }
+  }
+}
+.read-more{
+  .news-category__list.swiper-wrapper{ 
+      height: max-content !important;
+      @media screen and (min-width: $desktop-standart) {
+        &{
+          column-gap: 20px;
+        }
+    }
+  }
+  .news-category__item{
+    @media screen and (min-width: $desktop-standart) {
+        &:nth-child(n+5){
+        display: none;
+      }
+    }
+    @media screen and (max-width: $mobile-vertical) {
+        &:nth-child(n+5){
+        display: none;
+      }
+    }
+    @media screen and (max-width: $minimum-size) {
+      .news-category__image-wrapper{
+        display: none;
+      }
+    }
+  }
+  .swiper-scrollbar,
+  .swiper-button-prev,
+  .swiper-button-next{
+    @media screen and (min-width: $desktop-standart) {
+        &{
+          display: none !important;
+        }
+    }
+  }
+}
+.swiper-button::after{
+  content: '';
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+}
+.swiper-button::after{
+  content: '' !important;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 10px;
+  height: 10px;
+}
+.swiper-button.swiper-button-prev::after{
+  background-image: url('https://uploads-ssl.webflow.com/62b0653bbb3c55232c4fe1ec/62baae10100c29264ba4130b_Vector%20w22.svg');
+}
+.swiper-button.swiper-button-next::after{
+  background-image: url('https://uploads-ssl.webflow.com/62b0653bbb3c55232c4fe1ec/62baae1016476032c469df93_Vector%2022.svg');
+}
+.swiper-button.swiper-button-prev.swiper-button__read-more{
+  left: -38px;
+}
+.swiper-button.swiper-button-next.swiper-button__read-more{
+  right: -38px;
+}
+.news-category__list.swiper-wrapper{
+
+/*   @media screen and (max-width: $desktop-small) {
+    grid-column-gap: 2%;
+  } */
+      
+}
+.swiper-scrollbar{
+    position: absolute !important;
+    left: 0% !important;
+    bottom: -1.25rem !important;
+    height: 3px !important;
+    width: 100% !important;
+  .swiper-scrollbar-drag{
+    background: var(--interactive-color);
+  }
 }

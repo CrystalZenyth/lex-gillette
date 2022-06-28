@@ -1,0 +1,44 @@
+.pagination-container .fs-pagination ul {
+	display: flex;
+}
+.pagination-container .fs-pagination ul li a {
+	display: flex;
+	min-width: 33px;
+	height: auto;
+	align-items: center;
+	justify-content: center;
+	border: none !important;
+	border-radius: 10px !important;
+	font-size: 1.25rem;
+	font-weight: 500;
+	line-height: 100%;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	padding: 0px 10px;
+
+}
+
+.pagination-container .fs-pagination ul li a:hover {
+    color: #831B15 !important;
+	transition: all 0.3s ease;
+}
+
+.fs-pagination ul li.fs-pagination-active a:hover {
+    color: #831B15 !important;
+	transition: all 0.3s ease;
+}
+.fs-pagination ul li.fs-pagination-prev a,
+.fs-pagination ul li.fs-pagination-next a {
+    color: #831B15 !important;
+	transition: all 0.3s ease;
+}
+.fs-pagination ul li.fs-pagination-next{
+margin-left: 20px;
+}
+.fs-pagination ul li.fs-pagination-next{
+margin-right: 20px;
+}
+
+
+
+
