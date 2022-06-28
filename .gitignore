@@ -9,3 +9,8 @@ node_modules/
 
 # OS
 .DS_Store
+
+# my drafts
+
+src/index.html
+svg/
