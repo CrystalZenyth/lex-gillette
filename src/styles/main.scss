@@ -341,3 +341,14 @@ blockquote{
     }
   }
 }
+.invitation__container::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  background: var(--main-background);
+  height: 100%;
+  width: 6000px;
+  z-index: -1;
+}
