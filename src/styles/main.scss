@@ -12,6 +12,28 @@
   outline-offset: 4px;
   outline-width: 4px;
 }
+[data-name='hidden-box_wrapper']{
+  visibility: hidden;
+}
+    /* для хрома */
+      .video-box__transcript-content::-webkit-scrollbar-track,
+      body::-webkit-scrollbar-track{
+        background: var(--dark-gray-color);
+      }
+      .video-box__transcript-content::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        width: 5px;
+      }
+      .video-box__transcript-content::-webkit-scrollbar-thumb,
+      body::-webkit-scrollbar-thumb{
+        background: var(--interactive-color);
+      }
+      /* для мозилы */
+      html,
+      .video-box__transcript-content{
+        scrollbar-color: var(--interactive-color) var(--dark-gray-color); /* «цвет ползунка» «цвет полосы скроллбара» */
+        scrollbar-width: thin;  /* толщина */
+      };
 body .w-webflow-badge{
   display: none !important;
 }
@@ -38,18 +60,19 @@ body .w-webflow-badge{
   transition: all 0.5s;
 }
 .navigation__dropdown-list .navigation__dropdown-link:first-child {
-  margin-top: 20px;
+  padding-top: 20px;
 }
 .navigation__dropdown-list .navigation__dropdown-link:last-child {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
-.navigation__dropdown-btn {
+.navigation__dropdown-icon {
   svg {
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
   }
-  &.w--open {
+  &.js--active {
     svg {
       transform: rotate(-180deg);
+      transition: all 0.3s ease;
     }
   }
   @media screen and (max-width: $tablet) {
@@ -89,17 +112,23 @@ body .w-webflow-badge{
   }
 }
 
+.interactions__list-item::before,
 .contacts-desription__item::before {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 14px;
+  width: 17px;
+  height: 12px;
   background-image: url("https://uploads-ssl.webflow.com/62b0653bbb3c55232c4fe1ec/62b47d0ff49e4268f3babecb_Vectorf.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   left: 0;
   top: 8px;
+
+  @media screen and (min-width: $desktop-small) {
+      width: 20px;
+      height: 14px;
+  }
 }
 textarea {
   resize: none;
@@ -351,4 +380,26 @@ blockquote{
   height: 100%;
   width: 6000px;
   z-index: -1;
+}
+.video-box__lightbox{
+  @media screen and (max-width: $mobile-vertical) {    
+    width: calc(100% + 50px);
+    max-width: none;
+  }
+}
+.video-box__button-transcript{
+    & .close{
+      display: block;
+    }
+    & .open{
+      display: none;
+    }
+    &.js--active{
+    & .close{
+      display: none;
+    }
+    & .open{
+      display: block;
+    }
+    }
 }
