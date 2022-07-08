@@ -15,21 +15,29 @@
 [data-name='hidden-box_wrapper']{
   visibility: hidden;
 }
+
+
     /* для хрома */
+      .cart-wrapper .cart::-webkit-scrollbar-track,
+      .products-item__scroll-box::-webkit-scrollbar-track,
       .video-box__transcript-content::-webkit-scrollbar-track,
       body::-webkit-scrollbar-track{
         background: var(--dark-gray-color);
       }
+      .products-item__scroll-box::-webkit-scrollbar,
       .video-box__transcript-content::-webkit-scrollbar,
       body::-webkit-scrollbar {
         width: 5px;
       }
+      .products-item__scroll-box::-webkit-scrollbar-thumb,
       .video-box__transcript-content::-webkit-scrollbar-thumb,
       body::-webkit-scrollbar-thumb{
         background: var(--interactive-color);
       }
       /* для мозилы */
       html,
+      .cart-wrapper .cart,
+      .products-item__scroll-box,
       .video-box__transcript-content{
         scrollbar-color: var(--interactive-color) var(--dark-gray-color); /* «цвет ползунка» «цвет полосы скроллбара» */
         scrollbar-width: thin;  /* толщина */
@@ -403,3 +411,68 @@ blockquote{
     }
     }
 }
+.products-item__params-item[disabled]{
+  color: var(--disabled-color);
+  background-color: var(--disabled-color);
+}
+.products-item__add-card-wrapper{
+  width: max-content;
+}
+.products-item__add-card-wrapper::before{
+  content: '';
+  position: absolute;
+  width: 17px;
+  height: 15px;
+  background-image: url('https://uploads-ssl.webflow.com/62b0653bbb3c55232c4fe1ec/62b5afa7c00c487850374674_arrow.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  right: 0;
+  top: 3px;
+}
+.products-item__params-word::after{
+  content: ':';
+}
+
+.cart-wrapper{
+    & .cart{
+    
+      }
+    & .cart-item{
+      padding: 0;
+    }
+
+   & .button__text--with-padding::after,
+   & .button__text--with-padding::before{
+     content: '';
+     position: absolute;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: contain;
+     width: 16px;
+     height: 16px;
+     right: 0;
+     top: 5px;
+     transition: all 0.3s;
+     
+    }
+    & .button__text--with-padding::after{
+      background-image: url('https://uploads-ssl.webflow.com/62b0653bbb3c55232c4fe1ec/62b18aeb088f61fe043c8528_Group%205140.svg');
+      opacity: 1;
+    }
+    & .button__text--with-padding::before{
+      background-image: url('https://uploads-ssl.webflow.com/62b0653bbb3c55232c4fe1ec/62b18aa872eea878983c3f09_Group%205141.svg');
+      opacity: 0;
+    }
+    & .button:hover,
+    & .button:focus{
+       & .button__text--with-padding::after{
+      opacity: 0;
+
+       }
+       & .button__text--with-padding::before{
+      opacity: 1;
+
+       }
+    }
+}  

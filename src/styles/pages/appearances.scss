@@ -305,6 +305,20 @@
                     display: none;
                 }
         }
+        @media screen and (max-width:1279px){
+            .news-category__list.news-category--show-7{
+                .news-category__item:nth-child(n+6){
+                    display: none;
+                }
+            }
+        }
+        @media screen and (max-width:767px){
+            .news-category__list.news-category--show-7{
+                .news-category__item:nth-child(n+5){
+                    display: none;
+                }
+            }
+        }
     }
   &.news-category--show-14{
       .news-category__list{
