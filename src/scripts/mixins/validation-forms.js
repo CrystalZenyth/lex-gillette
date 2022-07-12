@@ -2,10 +2,11 @@
 
 function validationForm(e) {
 	const errorClass = 'js--error';
-	e.preventDefault();
 	/* EMAIL VALIDATION - START */
 	const inputEmail = this.querySelector('[type="email"]');
 	if (inputEmail) {
+		e.preventDefault();
+
 		const inputEmailValue = inputEmail.value;
 		if (
 			inputEmailValue.search(
@@ -24,6 +25,8 @@ function validationForm(e) {
 	const inputsText = this.querySelectorAll('[type="text"], textarea');
 
 	if (inputsText.length > 0) {
+		e.preventDefault();
+
 		inputsText.forEach((input) => {
 			if (input.hasAttribute('required') && input.value.trim().length === 0) {
 				e.stopImmediatePropagation();
@@ -37,6 +40,8 @@ function validationForm(e) {
 	/* CHECKBOXES VALIDATION - START */
 	const inputsCheckbox = this.querySelectorAll('[type="checkbox"][required]');
 	if (inputsCheckbox.length > 0) {
+		e.preventDefault();
+
 		inputsCheckbox.forEach((checkbox) => {
 			if (!checkbox.checked) {
 				e.stopImmediatePropagation();
