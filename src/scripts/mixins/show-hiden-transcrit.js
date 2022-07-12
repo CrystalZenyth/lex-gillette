@@ -33,7 +33,6 @@ function collapseAllHiddenBoxes() {
 	const hiddenBoxWrapper = document.querySelectorAll('[data-name="hidden-box_wrapper"]');
 	console.log(buttons);
 	console.log(hiddenBoxWrapper);
-	console.log(1);
 
 
 	buttons.forEach((button) => {

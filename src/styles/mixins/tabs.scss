@@ -1,0 +1,38 @@
+
+[role="tablist"] {
+  overflow: visible;
+}
+
+[role="tab"] {
+  position: relative;
+  overflow: visible;
+}
+
+[role="tab"][aria-selected="true"] {
+  outline: 0;
+}
+
+[role="tab"]:hover,
+[role="tab"]:focus,
+[role="tab"]:active {
+  outline: 0;
+  border-radius: 0;
+  color: inherit;
+}
+
+[role="tabpanel"] {
+  position: relative;
+  z-index: 2;
+}
+
+[role="tabpanel"]:focus {
+  outline: 0;
+}
+
+[hidden]{
+display: none !important;
+}
+[aria-selected="true"]{
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
