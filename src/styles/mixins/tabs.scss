@@ -16,8 +16,8 @@
 [role="tab"]:focus,
 [role="tab"]:active {
   outline: 0;
-  border-radius: 0;
-  color: inherit;
+/*   border-radius: 0; */  
+color: inherit;
 }
 
 [role="tabpanel"] {

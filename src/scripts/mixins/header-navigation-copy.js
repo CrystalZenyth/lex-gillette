@@ -1,6 +1,7 @@
+/* eslint-disable no-tabs */
 /* eslint-disable max-len */
 // focusin/out event polyfill (firefox)
-/*
+
 !(function () {
 	const w = window;
 	const d = w.document;
@@ -53,26 +54,46 @@ Array.prototype.forEach.call(menuItems1, (el, i) => {
 	const btn = `<button><span><span class="visuallyhidden">show submenu for “${activatingA.text}”</span></span></button>`;
 	activatingA.insertAdjacentHTML('afterend', btn);
 	el.addEventListener('mouseover', function (event) {
+
+    const buttons = document.querySelectorAll('.flyoutnavigation .has-submenu.open button');
+    buttons.forEach((button) => {
+      button.setAttribute('aria-expanded', 'false');
+    });
+    const itemsHasSubmenu = document.querySelectorAll('.flyoutnavigation .has-submenu.open');
+    itemsHasSubmenu.forEach((item) => {
+      item.className = 'has-submenu';
+    })
 		this.className = 'has-submenu open';
-		this.querySelector('a').setAttribute('aria-expanded', 'true');
+		/* this.querySelector('a').setAttribute('aria-expanded', 'true'); */
 		this.querySelector('button').setAttribute('aria-expanded', 'true');
 		clearTimeout(timer1);
 	});
 	el.addEventListener('mouseout', (event) => {
 		timer1 = setTimeout((event) => {
-			document.querySelector('.flyoutnavigation .has-submenu.open a').setAttribute('aria-expanded', 'false');
-			document.querySelector('.flyoutnavigation .has-submenu.open button').setAttribute('aria-expanded', 'false');
-			document.querySelector('.flyoutnavigation .has-submenu.open').className = 'has-submenu';
+			/* document.querySelector('.flyoutnavigation .has-submenu.open a').setAttribute('aria-expanded', 'false'); */
+      const buttons = document.querySelectorAll('.flyoutnavigation .has-submenu.open button');
+      buttons.forEach((button) => {
+        button.setAttribute('aria-expanded', 'false');
+      });
+      const itemsHasSubmenu = document.querySelectorAll('.flyoutnavigation .has-submenu.open');
+      itemsHasSubmenu.forEach((item) => {
+        item.className = 'has-submenu';
+      })
+      
+      
+
+/*       document.querySelector('.flyoutnavigation .has-submenu.open button').setAttribute('aria-expanded', 'false');
+			document.querySelector('.flyoutnavigation .has-submenu.open').className = 'has-submenu'; */
 		}, 100);
 	});
 	el.querySelector('button').addEventListener('click', function (event) {
 		if (this.parentNode.className == 'has-submenu') {
 			this.parentNode.className = 'has-submenu open';
-			this.parentNode.querySelector('a').setAttribute('aria-expanded', 'true');
+			/* this.parentNode.querySelector('a').setAttribute('aria-expanded', 'true'); */
 			this.parentNode.querySelector('button').setAttribute('aria-expanded', 'true');
 		} else {
 			this.parentNode.className = 'has-submenu';
-			this.parentNode.querySelector('a').setAttribute('aria-expanded', 'false');
+			/* this.parentNode.querySelector('a').setAttribute('aria-expanded', 'false'); */
 			this.parentNode.querySelector('button').setAttribute('aria-expanded', 'false');
 		}
 		event.preventDefault();
@@ -90,11 +111,11 @@ Array.prototype.forEach.call(menuItems1, (el, i) => {
 				const opennav = document.querySelector('.flyoutnavigation .has-submenu.open');
 				if (opennav) {
 					opennav.className = 'has-submenu';
-					opennav.querySelector('a').setAttribute('aria-expanded', 'false');
+					/* opennav.querySelector('a').setAttribute('aria-expanded', 'false'); */
 					opennav.querySelector('button').setAttribute('aria-expanded', 'false');
 				}
 			}, 10);
 		});
 	});
 });
- */
+

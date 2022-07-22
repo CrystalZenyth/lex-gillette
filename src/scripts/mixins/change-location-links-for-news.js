@@ -16,12 +16,14 @@ function changeLocationLinks() {
 		}
 	}
 
-
 	tagsList.forEach((list) => {
 		const parentCard = list.closest('.news-category__item');
 		const parentCardFooter = parentCard.querySelector('.news-category__item-footer');
 		parentCardFooter.prepend(list);
-		parentCard.querySelector('.news-category__tags-wrapper').remove();
+		const tagsWrapper = parentCard.querySelector('.news-category__tags-wrapper');
+		if (tagsWrapper) {
+			tagsWrapper.remove();
+		}
 	});
 }
 function checkImpartantСondition() {

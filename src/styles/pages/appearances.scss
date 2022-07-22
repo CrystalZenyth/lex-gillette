@@ -1,5 +1,10 @@
 @import '../mixins/variables.scss';
-
+.news-category__name{
+    display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
 .section.news-category{
 
   .news-category__list{
@@ -448,10 +453,10 @@
           }
           }
 
-
       }
   }
-        @media screen and (max-width:$minimum-size) {
+   
+        @media screen and (max-width:430px) {
 
           .news-category__item:nth-child(n){
             .news-category__image-wrapper{

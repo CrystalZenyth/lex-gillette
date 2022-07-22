@@ -57,13 +57,14 @@ Array.prototype.forEach.call(menuItems1, (el) => {
 	activatingA.insertAdjacentHTML('afterend', btn);
 	el.addEventListener('mouseover', () => {
 		this.className = 'has-submenu open';
-		this.querySelector('a').setAttribute('aria-expanded', 'true');
+		/* this.querySelector('a').setAttribute('aria-expanded', 'true'); */
 		this.querySelector('button').setAttribute('aria-expanded', 'true');
 		clearTimeout(timer1);
 	});
 	el.addEventListener('mouseout', () => {
 		timer1 = setTimeout(() => {
-			document.querySelector('.flyoutnavigation .has-submenu.open a').setAttribute('aria-expanded', 'false');
+			/* document.querySelector('.flyoutnavigation .has-submenu.open a')
+			.setAttribute('aria-expanded', 'false'); */
 			document.querySelector('.flyoutnavigation .has-submenu.open button').setAttribute('aria-expanded', 'false');
 			document.querySelector('.flyoutnavigation .has-submenu.open').className = 'has-submenu';
 		}, 100);
@@ -71,11 +72,11 @@ Array.prototype.forEach.call(menuItems1, (el) => {
 	el.querySelector('button').addEventListener('click', (event) => {
 		if (this.parentNode.className === 'has-submenu') {
 			this.parentNode.className = 'has-submenu open';
-			this.parentNode.querySelector('a').setAttribute('aria-expanded', 'true');
+			/* this.parentNode.querySelector('a').setAttribute('aria-expanded', 'true'); */
 			this.parentNode.querySelector('button').setAttribute('aria-expanded', 'true');
 		} else {
 			this.parentNode.className = 'has-submenu';
-			this.parentNode.querySelector('a').setAttribute('aria-expanded', 'false');
+			/* this.parentNode.querySelector('a').setAttribute('aria-expanded', 'false'); */
 			this.parentNode.querySelector('button').setAttribute('aria-expanded', 'false');
 		}
 		event.preventDefault();
@@ -93,10 +94,29 @@ Array.prototype.forEach.call(menuItems1, (el) => {
 				const opennav = document.querySelector('.flyoutnavigation .has-submenu.open');
 				if (opennav) {
 					opennav.className = 'has-submenu';
-					opennav.querySelector('a').setAttribute('aria-expanded', 'false');
+					/* opennav.querySelector('a').setAttribute('aria-expanded', 'false'); */
 					opennav.querySelector('button').setAttribute('aria-expanded', 'false');
 				}
 			}, 10);
 		});
 	});
 });
+
+/* function closeSubmenu(e) {
+	let currentIndexSubmenuWrapper;
+	console.log(e.target);
+	console.log(e.relatedTarget);
+	console.log(this);
+	document.querySelectorAll('.has-submenu').forEach((bigItem, index) => {
+		if (bigItem === this) {
+			currentIndexSubmenuWrapper = index;
+		}
+		console.log(currentIndexSubmenuWrapper);
+		bigItem.addEventListener('mouseout', closeSubmenu);
+	});
+}
+
+document.querySelectorAll('.has-submenu').forEach((bigItem) => {
+	bigItem.addEventListener('mouseout', closeSubmenu);
+});
+ */

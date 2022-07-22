@@ -1876,6 +1876,7 @@
 		const s = document.createElement('li');
 		s.classList.add('fs-pagination-page'), (s.className += ` ${o} `);
 		const c = document.createElement('a');
+		c.setAttribute('tabindex', 0);
 		switch (n) {
 		case 'dots':
 			c.innerHTML = '...';
