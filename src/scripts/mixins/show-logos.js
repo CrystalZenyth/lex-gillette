@@ -10,10 +10,7 @@ function hideLogos(logosWrapper) {
 	const heightfirstStrings = (+getComputedStyle(logosList).gridTemplateRows.split(' ')[0].slice(0, -2)) + (+getComputedStyle(logosList).gridTemplateRows.split(' ')[1].slice(0, -2));
 	const sizeGap = (+getComputedStyle(logosList).columnGap.slice(0, -2));
 	const countColumn = (+getComputedStyle(logosList).gridTemplateColumns.split(' ').length);
-	/* console.log(heightfirstStrings);
-	console.log(sizeGap);
-	console.log(countColumn);
-	console.log(sizeGap + heightfirstStrings); */
+
 	logosList.style.maxHeight = `${sizeGap + heightfirstStrings}px`;
 	const logos = logosList.childNodes;
 	logos.forEach((logo, index) => {

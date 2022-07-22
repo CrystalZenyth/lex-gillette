@@ -1,3 +1,9 @@
+function changeRoleForSlides() {
+	const slides = document.querySelectorAll('.swiper-slide');
+	slides.forEach((slide) => {
+		slide.setAttribute('role', 'listitem');
+	});
+}
 /* eslint-disable no-undef */
 
 
@@ -16,6 +22,11 @@ function initSwiper() {
 			slidesPerView: 1,
 			spaceBetween: 20,
 			loop: false,
+			on: {
+				afterInit() {
+					changeRoleForSlides();
+				},
+			},
 			breakpoints: {
 				// when window width is >= 320px
 				767: {
@@ -33,7 +44,8 @@ function initSwiper() {
 				nextEl: '.swiper-button-next.swiper-button__read-more',
 			},
 			scrollbar: {
-				el: '.swiper-scrollbar.read-more__scroll-bar',
+				// el: '.swiper-scrollbar.read-more__scroll-bar',
+				el: '.swiper-scrollbar',
 				draggable: true,
 			},
 		});

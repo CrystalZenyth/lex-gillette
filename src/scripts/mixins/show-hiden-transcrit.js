@@ -31,9 +31,6 @@ function collapseAllHiddenBoxes() {
 	const modifiedСlass = 'js--active';
 	const buttons = document.querySelectorAll('[data-name="button-for-hidden-content"]');
 	const hiddenBoxWrapper = document.querySelectorAll('[data-name="hidden-box_wrapper"]');
-	console.log(buttons);
-	console.log(hiddenBoxWrapper);
-
 
 	buttons.forEach((button) => {
 		button.classList.remove(modifiedСlass);

@@ -1,8 +1,18 @@
 
 let countVisibleString;
 
+function addAriaAttribites() {
+	const buttonsShoWHide = document.querySelectorAll('[data-name="show-hide"]');
+	buttonsShoWHide.forEach((button) => {
+		const slideID = button.closest('.swiper-slide').getAttribute('id');
+		button.setAttribute('aria-controls', slideID);
+	});
+}
+addAriaAttribites();
+
 function showOrhiddeContent(e) {
 	if (e.target.classList.contains('testimonials__item-link')) {
+		/* const currentSlide = e.target.closest('.swiper-slide'); */
 		const currentText = e.target.previousSibling;
 		const currentTextMaxHeight = currentText.scrollHeight;
 		const computedStyle = getComputedStyle(currentText);
@@ -14,11 +24,14 @@ function showOrhiddeContent(e) {
 			currentText.style.height = `${currentTextMinHeight}px`;
 			setTimeout(() => {
 				currentText.style.height = `${currentTextMaxHeight}px`;
-				e.target.textContent = 'Hide review';
+				e.target.textContent = 'Hide more';
+				e.target.setAttribute('aria-expanded', true);
+				e.target.setAttribute('aria-expanded', true);
 			}, 10);
 		} else {
 			currentText.style.height = `${currentTextMinHeight}px`;
-			e.target.textContent = 'See full review';
+			e.target.textContent = 'Show more';
+			e.target.setAttribute('aria-expanded', false);
 		}
 	}
 }

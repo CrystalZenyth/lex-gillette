@@ -1,4 +1,4 @@
-const linksForLightBox = document.querySelectorAll('.video-box__lightbox');
+/* const linksForLightBox = document.querySelectorAll('.video-box__lightbox');
 
 function changeFocus() {
 	const buttonLightboxClose = document.querySelector('.w-lightbox-close');
@@ -21,7 +21,6 @@ function initObserver() {
 		if (targetEl.querySelector('.w-lightbox-close')) {
 			const buttonLightboxClose = document.querySelector('.w-lightbox-close');
 			if (document.activeElement === buttonLightboxClose) {
-        console.log(1);
 				changeFocus();
 			}
 		}
@@ -35,3 +34,4 @@ function initObserver() {
 }
 
 initObserver();
+ */
