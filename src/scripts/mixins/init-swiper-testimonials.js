@@ -22,12 +22,11 @@ const testimonialsSwiper = new Swiper('.swiper.testimonials__collection', {
 	spaceBetween: 20,
 	loop: true,
 	/* loopedSlides: 10, */
-	centeredSlides: true,
+	centeredSlides: false,
 	on: {
 		afterInit() {
 			changeRoleForSlides();
 		},
-		/* slideChange: blabla, */
 	},
 	breakpoints: {
 		467: {
@@ -49,7 +48,7 @@ const testimonialsSwiper = new Swiper('.swiper.testimonials__collection', {
 	},
 });
 
-function blabla() {
+function recordNotification() {
 	const swiperNotification = document.querySelector('.swiper-notification ');
 	const activeSlide = document.querySelector('.swiper-slide.swiper-slide-active .testimonials__item-text');
 	const activIndex = testimonialsSwiper.activeIndex;
@@ -64,4 +63,4 @@ function blabla() {
 	});
 }
 
-testimonialsSwiper.on('slideChange', blabla);
+testimonialsSwiper.on('slideChange', recordNotification);

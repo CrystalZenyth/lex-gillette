@@ -5,7 +5,7 @@ function changeFocus(e) {
 		e.target.focus();
 		const newTarget = document.getElementById(id);
 		newTarget.focus();
-	}, 700);
+	}, 1500);
 }
 
 function addLabelforButton() {
