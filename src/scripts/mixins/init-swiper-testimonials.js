@@ -1,20 +1,18 @@
 function changeRoleForSlides() {
-	const slides = document.querySelectorAll('.swiper-slide');
+	const swiperWrapper = document.querySelector('.swiper-wrapper');
+	const slides = swiperWrapper.querySelectorAll('.swiper-slide');
+	const swiperNotification = swiperWrapper.querySelector('.swiper-notification ');
+	swiperWrapper.removeAttribute('aria-live');
 	slides.forEach((slide, index) => {
 		slide.setAttribute('role', 'listitem');
 		slide.setAttribute('id', `slide-${index}`);
 	});
+	if (swiperNotification) {
+		swiperNotification.setAttribute('aria-live', 'polite');
+	}
 }
 
-/* function changeTabIndexForSlides() {
-	const buttonsInSliders = document.querySelectorAll('[data-name="show-hide"]');
-	const buttonInActiveSlide =
-	document.querySelectorAll('.swiper-slide.swiper-slide-active [data-name="show-hide"]');
-	buttonsInSliders.forEach((button) => {
-		button.setAttribute('tabindex', '-1');
-	});
-	buttonInActiveSlide.setAttribute('tabindex', '0');
-} */
+
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-undef
 const testimonialsSwiper = new Swiper('.swiper.testimonials__collection', {
@@ -24,17 +22,12 @@ const testimonialsSwiper = new Swiper('.swiper.testimonials__collection', {
 	spaceBetween: 20,
 	loop: true,
 	/* loopedSlides: 10, */
-	centeredSlides: true,
+	centeredSlides: false,
 	on: {
 		afterInit() {
 			changeRoleForSlides();
-			/* changeTabIndexForSlides(); */
 		},
-	/* slideChange() {
-			changeTabIndexForSlides();
-		}, */
 	},
-
 	breakpoints: {
 		467: {
 			slidesPerView: 2,
@@ -55,6 +48,19 @@ const testimonialsSwiper = new Swiper('.swiper.testimonials__collection', {
 	},
 });
 
-/* testimonialsSwiper.on('slideChange', changeTabIndexForSlides); */
+function recordNotification() {
+	const swiperNotification = document.querySelector('.swiper-notification ');
+	const activeSlide = document.querySelector('.swiper-slide.swiper-slide-active .testimonials__item-text');
+	const activIndex = testimonialsSwiper.activeIndex;
+	const slides = document.querySelectorAll('.swiper-slide');
+	if (swiperNotification && swiperNotification.getAttribute !== 'polite') {
+		swiperNotification.setAttribute('aria-live', 'polite');
+	}
+	slides.forEach((slide, index) => {
+		if (slide.getAttribute('id') === `slide-${activIndex}` && swiperNotification) {
+			swiperNotification.textContent = slide.textContent;
+		}
+	});
+}
 
-/* realIndexChange */
+testimonialsSwiper.on('slideChange', recordNotification);

@@ -1,27 +1,22 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable global-require */
-/* eslint-disable new-cap */
-/* eslint-disable no-tabs */
-/* eslint-disable prefer-const */
-/* eslint-disable no-multi-assign */
-/* eslint-disable no-empty */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-continue */
-/* eslint-disable no-console */
-/* eslint-disable consistent-return */
-/* eslint-disable no-mixed-operators */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-param-reassign */
-/* eslint-disable default-case */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable max-len */
-/* eslint-disable no-undef */
-/* eslint-disable func-names */
-/* eslint-disable prefer-rest-params */
+function addRequired() {
+	const elementsForms = document.querySelectorAll('[aria-required="true"]');
+	const zipCodeFields = document.querySelectorAll('[autocomplete="postal-code"]');
+	const searchFields = document.querySelector('#search');
+	elementsForms.forEach((elementForm) => {
+		elementForm.setAttribute('required', true);
+	});
+	zipCodeFields.forEach((elementForm) => {
+		elementForm.setAttribute('type', 'number');
+		elementForm.setAttribute('minlength', '5');
+		elementForm.setAttribute('maxlength', '5');
+	});
+	if (searchFields) {
+		searchFields.setAttribute('name', 'search');
+		searchFields.setAttribute('type', 'search');
+	}
+}
+addRequired();
+/* eslint-disable */
 /*!
  * jQuery Validation Plugin v1.19.5
  *
@@ -218,7 +213,10 @@
 			), element);
 
 			// Make sure required is at front
+			
 			if (data.required) {
+				
+
 				param = data.required;
 				delete data.required;
 				data = $.extend({ required: param }, data);
@@ -1118,6 +1116,8 @@
 			},
 
 			optional(element) {
+				
+
 				const val = this.elementValue(element);
 				return !$.validator.methods.required.call(this, val, element) && 'dependency-mismatch';
 			},
@@ -1258,6 +1258,7 @@
 				// Support for <input required> in both html5 and older browsers
 				if (method === 'required') {
 					value = element.getAttribute(method);
+					
 
 					// Some browsers return an empty string for the required attribute
 					// and non-HTML5 browsers might have required="" markup
@@ -1296,6 +1297,7 @@
 				if (value === '') {
 					value = true;
 				}
+				
 
 				this.normalizeAttributeRule(rules, type, method, value);
 			}
@@ -1320,6 +1322,8 @@
 					delete rules[prop];
 					return;
 				}
+				
+
 				if (val.param || val.depends) {
 					let keepRule = true;
 					switch (typeof val.depends) {
@@ -1405,6 +1409,8 @@
 
 			// https://jqueryvalidation.org/required-method/
 			required(value, element, param) {
+				
+
 				// Check if dependency is met
 				if (!this.depend(param, element)) {
 					return 'dependency-mismatch';
@@ -1663,7 +1669,46 @@
 }));
 
 
+
+$('form').each(function () {
+	// validate signup form on keyup and submit
+	$(this).validate({
+		errorElement: 'span',
+		rules: {
+			name: 'required',
+			search: 'required',
+			company: 'required',
+			email: {
+				required: true,
+				email: true
+			},
+			phone: {
+				phoneUS: true
+			},
+			message: 'required'
+		},
+		messages: {
+			name: 'Error: First and Last Name is required.',
+			company: 'Error: Company Name is required.',
+			email: {
+				required: 'Error: Email Address is required.',
+				email: 'Error: Enter a valid email format. (e.g. email@domain.com)'
+			},
+			search: {
+				required: 'Error: Search field is required.',
+			},
+			phone: {
+				phoneUS: 'Error: Enter a valid phone number (e.g. (XXX) XXX-XXXX)'
+			},
+			message: 'Error: Message is required.'
+		}
+	})
+
+});
+
+
 $('form').each(function () {
 	$(this).validate();
 });
+
 

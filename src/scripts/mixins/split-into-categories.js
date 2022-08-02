@@ -4,13 +4,28 @@
 function changeLocationSection() {
 	const mainBlock = document.querySelector('[data-name="main-section"]');
 	document.querySelector('.news-category--news');
-	mainBlock.append(document.querySelector('.news-category--news'));
-	mainBlock.append(document.querySelector('.news-category--podcasts'));
-	mainBlock.append(document.querySelector('.news-category--broadcast'));
-	mainBlock.append(document.querySelector('.news-category--magazines'));
-	mainBlock.append(document.querySelector('.news-category--aware-now'));
+	if (document.querySelector('.news-category--news')) {
+		mainBlock.append(document.querySelector('.news-category--news'));
+	}
+	if (document.querySelector('.news-category--podcasts')) {
+		mainBlock.append(document.querySelector('.news-category--podcasts'));
+	}
+	if (document.querySelector('.news-category--broadcast')) {
+		mainBlock.append(document.querySelector('.news-category--broadcast'));
+	}
+	if (document.querySelector('.news-category--magazines')) {
+		mainBlock.append(document.querySelector('.news-category--magazines'));
+	}
+	if (document.querySelector('.news-category--aware-now')) {
+		mainBlock.append(document.querySelector('.news-category--aware-now'));
+	}
+	if (document.querySelector('.news-category--aware-now')) {
+		mainBlock.append(document.querySelector('.news-category--aware-now'));
+	}
 	document.querySelectorAll('.news-category--secondary').forEach((section) => {
-		mainBlock.append(section);
+		if (section) {
+			mainBlock.append(section);
+		}
 	});
 }
 
@@ -39,6 +54,10 @@ function addClassesToSections() {
 			section.classList.add('news-category--news');
 			section.classList.add('news-category--show-10');
 			break;
+		case 'FEATURED':
+			section.classList.add('news-category--news');
+			section.classList.add('news-category--show-10');
+			break;
 		case 'PODCASTS':
 			section.classList.add('news-category--podcasts');
 			section.classList.add('news-category--show-3');
@@ -52,6 +71,10 @@ function addClassesToSections() {
 			section.classList.add('news-category--show-3');
 			break;
 		case 'AWARE NOW':
+			section.classList.add('news-category--aware-now');
+			section.classList.add('news-category--show-7');
+			break;
+		case 'ADDITIONAL':
 			section.classList.add('news-category--aware-now');
 			section.classList.add('news-category--show-7');
 			break;

@@ -1,7 +1,7 @@
-function initCmsPagination() {
+function initCmsPaginationShop() {
 	// create a new Library instance and store it in a variable called "projectsGrid"
 	// eslint-disable-next-line no-undef
-	const projectsGrid = new FsLibrary('.blog-collection__list');
+	const projectsGrid = new FsLibrary('.products-list');
 
 	// run loadmore on our instance
 	projectsGrid.loadmore({
@@ -13,7 +13,7 @@ function initCmsPagination() {
 			itemsPerPage:
 			/* кол-во элементов на странице в зависимости от ширины экрана (не меняются по ресайзу) */
         // eslint-disable-next-line no-nested-ternary
-        window.innerWidth > 1279 ? 6 : window.innerWidth > 768 ? 6 : 6,
+        window.innerWidth > 1279 ? 8 : window.innerWidth > 768 ? 6 : 4,
 			insertPagination: '.pagination-container',
 			bgColor: 'transpaerent',
 			bgColorActive: 'transpaerent',
@@ -28,16 +28,7 @@ function initCmsPagination() {
 		},
 	});
 }
-initCmsPagination();
 
-/* function checkChildren() {
-	const list = document.querySelector('.blog-collection__list');
-	if (list.childNodes.length > 1) {
-		console.log('больше 1 детей');
-
-		initCmsPagination();
-	}
-}
-checkChildren(); */
+initCmsPaginationShop();
 
 

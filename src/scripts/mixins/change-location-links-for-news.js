@@ -13,6 +13,7 @@ function changeLocationLinks() {
 			generalListOfLinks.parentNode.remove();
 		} else {
 			generalListOfLinks.append(linkSeparateSecondary);
+			generalListOfLinks.prepend(linkSeparate);
 		}
 	}
 

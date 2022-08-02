@@ -19,6 +19,9 @@
 .error:focus-visible{
   box-shadow: 0 0 0 2px var(--white-color), 0 0 0 4px var(--error-color), 0 0 4px 8px var(--white-color);
 }
+.input.input--mb.error + span.error{
+margin: -10px 0 10px;
+}
 span{
   &.error{
     color: var(--error-color);
@@ -366,42 +369,52 @@ border-color: var(--text-color);
     background: var(--interactive-color);
   }
 }
-.testimonials__item{
-  .testimonials__item-text{
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-  }
-  &.swiper-slide-active{
-    @media screen and (min-width: $mobile-vertical) {
-      
-      .testimonials__item-title{
-        color: var(--white-color);
-      }
-      .testimonials__item-link{ 
-        color: var(--white-color);
-      }
+.testimonials__list{
+
+  .testimonials__item{
+    .testimonials__item-text{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
     }
-    &::after{
-      position: relative;
-      content: "\00a0";
-    }
-  }
-  &.swiper-slide-active{
-    @media screen and (max-width: $mobile-vertical) {
-      
-      .testimonials__item-title{
-        color: var(--white-color);
-      }
-      .testimonials__item-link{
-        color: var(--white-color);
-        &:hover{
-          color: var(--error-color);
-  
+    &.swiper-slide{
+      &.swiper-slide-active{
+        color: inherit;
+        background: transparent;
+          
+        &::after{
+          position: relative;
+          content: "\00a0";
         }
       }
+      /* &:hover{
+        color: rgb(244 244 244 / 70%);
+        color: var(--interactive-color);
+        background: var(--interactive-color);
+
+          .testimonials__item-link,
+          .testimonials__item-title{
+            color: var(--white-color);
+          }
+      } */
     }
 
+      /*   &.swiper-slide-active{
+        @media screen and (max-width: $mobile-vertical) {
+          
+          .testimonials__item-title{
+            color: var(--white-color);
+          }
+          .testimonials__item-link{
+            color: var(--white-color);
+            &:hover{
+              color: var(--error-color);
+      
+            }
+          }
+        }
+
+        } */
   }
 }
 .testimonials__swiper-button.swiper-button{

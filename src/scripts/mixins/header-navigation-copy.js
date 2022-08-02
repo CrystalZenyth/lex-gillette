@@ -51,18 +51,17 @@ const parseHTML = function (str) {
 
 Array.prototype.forEach.call(menuItems1, (el, i) => {
 	const activatingA = el.querySelector('a');
-	const btn = `<button><span><span class="visuallyhidden">show submenu for “${activatingA.text}”</span></span></button>`;
+	const btn = `<button aria-expanded="false"><span><span class="visuallyhidden">show submenu for “${activatingA.text}”</span></span></button>`;
 	activatingA.insertAdjacentHTML('afterend', btn);
 	el.addEventListener('mouseover', function (event) {
-
-    const buttons = document.querySelectorAll('.flyoutnavigation .has-submenu.open button');
-    buttons.forEach((button) => {
-      button.setAttribute('aria-expanded', 'false');
-    });
-    const itemsHasSubmenu = document.querySelectorAll('.flyoutnavigation .has-submenu.open');
-    itemsHasSubmenu.forEach((item) => {
-      item.className = 'has-submenu';
-    })
+		const buttons = document.querySelectorAll('.flyoutnavigation .has-submenu.open button');
+		buttons.forEach((button) => {
+			button.setAttribute('aria-expanded', 'false');
+		});
+		const itemsHasSubmenu = document.querySelectorAll('.flyoutnavigation .has-submenu.open');
+		itemsHasSubmenu.forEach((item) => {
+			item.className = 'has-submenu';
+		});
 		this.className = 'has-submenu open';
 		/* this.querySelector('a').setAttribute('aria-expanded', 'true'); */
 		this.querySelector('button').setAttribute('aria-expanded', 'true');
@@ -71,18 +70,17 @@ Array.prototype.forEach.call(menuItems1, (el, i) => {
 	el.addEventListener('mouseout', (event) => {
 		timer1 = setTimeout((event) => {
 			/* document.querySelector('.flyoutnavigation .has-submenu.open a').setAttribute('aria-expanded', 'false'); */
-      const buttons = document.querySelectorAll('.flyoutnavigation .has-submenu.open button');
-      buttons.forEach((button) => {
-        button.setAttribute('aria-expanded', 'false');
-      });
-      const itemsHasSubmenu = document.querySelectorAll('.flyoutnavigation .has-submenu.open');
-      itemsHasSubmenu.forEach((item) => {
-        item.className = 'has-submenu';
-      })
-      
-      
+			const buttons = document.querySelectorAll('.flyoutnavigation .has-submenu.open button');
+			buttons.forEach((button) => {
+				button.setAttribute('aria-expanded', 'false');
+			});
+			const itemsHasSubmenu = document.querySelectorAll('.flyoutnavigation .has-submenu.open');
+			itemsHasSubmenu.forEach((item) => {
+				item.className = 'has-submenu';
+			});
 
-/*       document.querySelector('.flyoutnavigation .has-submenu.open button').setAttribute('aria-expanded', 'false');
+
+			/*       document.querySelector('.flyoutnavigation .has-submenu.open button').setAttribute('aria-expanded', 'false');
 			document.querySelector('.flyoutnavigation .has-submenu.open').className = 'has-submenu'; */
 		}, 100);
 	});
@@ -119,3 +117,15 @@ Array.prototype.forEach.call(menuItems1, (el, i) => {
 	});
 });
 
+function addAriaControl() {
+	const buttonsInNavigation = document.querySelectorAll('.navigation__menu button');
+
+	console.log(buttonsInNavigation);
+	buttonsInNavigation.forEach((button, index) => {
+		console.log(button);
+		button.setAttribute('aria-controls', `hidden-box${index + 1}`);
+		button.nextElementSibling.setAttribute('id', `hidden-box${index + 1}`);
+	});
+}
+addAriaControl();
+ 
