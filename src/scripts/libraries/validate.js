@@ -1686,6 +1686,7 @@ $('form').each(function () {
 				phoneUS: true
 			},
 			message: 'required'
+			checkbox: 'required'
 		},
 		messages: {
 			name: 'Error: First and Last Name is required.',
@@ -1701,6 +1702,7 @@ $('form').each(function () {
 				phoneUS: 'Error: Enter a valid phone number (e.g. (XXX) XXX-XXXX)'
 			},
 			message: 'Error: Message is required.'
+			checkbox: 'Error: You must agree to the processing of personal data'
 		}
 	})
 
